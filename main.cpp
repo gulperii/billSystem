@@ -4,10 +4,22 @@
 #include <pthread.h>
 #include <unistd.h>
 using namespace std;
+//ortak hesaplar
 int electricity, water, gas, telecommunications, cableTv = 0;
 string input_log;
 int NUM_CUSTOMERS;
 int NUM_ATMS = 10;
+pthread_mutex_t balance_changer = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t atm10 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t atm1 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t atm2 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t atm3 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t atm4 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t atm5 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t atm6 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t atm7 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t atm8 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t atm9 = PTHREAD_MUTEX_INITIALIZER;
 
 struct customer_thread_data {
     int  customer_id;
@@ -27,6 +39,32 @@ void *pay(void *threadarg) {
     sleep(my_data->sleep_time);
 
     if(sleep){
+        switch(my_data->ATM_id){
+            case 1:
+                pthread_mutex_lock(&atm1);
+            case 2:
+                pthread_mutex_lock(&atm2);
+            case 3:
+                pthread_mutex_lock(&atm3);
+            case 4:
+                pthread_mutex_lock(&atm4);
+            case 5:
+                pthread_mutex_lock(&atm5);
+            case 6:
+                pthread_mutex_lock(&atm6);
+            case 7:
+                pthread_mutex_lock(&atm7);
+            case 8:
+                pthread_mutex_lock(&atm8);
+            case 9:
+                pthread_mutex_lock(&atm9);
+            case 10:
+                pthread_mutex_lock(&atm10);
+
+
+        }
+
+
 
     }
     pthread_exit(NULL);
